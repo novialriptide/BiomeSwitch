@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public float moveHydrationPenalty = 0.05f;
+    public float hydration = 100f;
+    public float sunBurn = 0f;
+
     public float speed;
-    public float hydration = 100;
     CharacterController2D characterController2D;
     Rigidbody2D rigidBody2D;
     SpriteRenderer spriteRenderer;
@@ -51,11 +54,16 @@ public class Player : MonoBehaviour
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
+
+        Debug.Log(hydration);
     }
 
     private void FixedUpdate()
     {
         characterController2D.Move(xAxis * Time.deltaTime * speed, false, jump);
+        if (xAxis != 0)
+            hydration -= Time.deltaTime * moveHydrationPenalty;
+
         jump = false;
         // characterController2D.isUnderGround();
     }
