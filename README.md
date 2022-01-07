@@ -3,11 +3,15 @@
 A side-scrolling platformer, you must survive as long as possible in the weather simulator.
 Adapt to the different environments as you progress through. Try getting a high-score as well.
 
-Developer
- - [Andrew Hong](https://github.com/novialriptide)
+**Developer** Andrew Hong [
+[GitHub](https://github.com/novialriptide)
+[Twitter](https://twitter.com/novialriptide)
+[Itch.io](https://novial.itch.io/)
+]
 
-Artist
- - cobalt6600
+**Artist** cobalt6600
 
-Musician
- - [Peter Hodgden](https://soundcloud.com/peter-hodgden)
+**Musician** Cyber Squib [
+[Blog](https://cybersquib.music.blog/)
+[SoundCloud](https://soundcloud.com/peter-hodgden)
+]
