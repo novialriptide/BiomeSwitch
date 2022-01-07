@@ -6,5 +6,8 @@ Adapt to the different environments as you progress through. Try getting a high-
 Developer
  - [Andrew Hong](https://github.com/novialriptide)
 
+Artist
+ - cobalt6600
+
 Musician
  - [Peter Hodgden](https://soundcloud.com/peter-hodgden)
