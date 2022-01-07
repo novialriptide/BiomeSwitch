@@ -152,4 +152,11 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	public bool isUnderGround()
+	{
+		// Uses raycasting to detect if there is a collider above.
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), Mathf.Infinity, m_WhatIsGround);
+		return hit.collider != null;
+	}
 }
