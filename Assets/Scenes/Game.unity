@@ -236,7 +236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &274564064
 MonoBehaviour:
@@ -284,6 +284,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 1
   xAxisSpeed: 2
+--- !u!1 &343963808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343963809}
+  m_Layer: 0
+  m_Name: Biome Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343963809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343963808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1699612, y: -1.3146844, z: -7.196066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &716735237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4019842571373722387, guid: 7698fc9077c529a4a916ca0231425c87, type: 3}
@@ -471,7 +501,7 @@ Transform:
   - {fileID: 182007915}
   - {fileID: 1222788447}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1289885799
 MonoBehaviour:
@@ -486,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  hydration: 100
 --- !u!1 &1541568514
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPlatformDistance: 200
-  maxJumpDistance: 3
+  minJumpDistance: 3
+  maxJumpDistance: 5
   player: {fileID: 1289885793}
   platforms:
   - {fileID: 4019842571373722389, guid: 7698fc9077c529a4a916ca0231425c87, type: 3}
@@ -534,7 +566,7 @@ Transform:
   m_Children:
   - {fileID: 716735237}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4019842571999229974
 PrefabInstance:
