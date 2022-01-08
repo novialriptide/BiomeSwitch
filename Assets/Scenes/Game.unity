@@ -515,8 +515,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0986b9379ce68c44911620021bad3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  moveHydrationPenalty: 0.5
   hydration: 100
+  sunBurn: 0
+  speed: 20
+  resetTime: 3
+  timeRemainingTilReset: 0
+  resetTimer: 0
 --- !u!1 &1541568514
 GameObject:
   m_ObjectHideFlags: 0
