@@ -13,8 +13,6 @@ Adapt to the different environments as you progress through. Try getting a high-
 [Itch.io](https://arix-furette.itch.io/)
 ]
 
-**Artist** cobalt6600
-
 **Musician** Cyber Squib [
 [Blog](https://cybersquib.music.blog/)
 [SoundCloud](https://soundcloud.com/peter-hodgden)
