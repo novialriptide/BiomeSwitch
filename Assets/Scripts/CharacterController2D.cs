@@ -18,7 +18,15 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+
+	public bool queueNormalFeet = false;
+	public bool queueSlipperyFeet = false;
 	public bool slipperyFeet = false;
+
+	bool isMovingUp = false;
+	bool isMovingDown = false;
+	bool isMovingLeft = false;
+	bool isMovingRight = false;
 
 	[Header("Events")]
 	[Space]
@@ -57,6 +65,20 @@ public class CharacterController2D : MonoBehaviour
 				m_Grounded = true;
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
+			}
+		}
+
+		if (m_Grounded)
+        {
+			if (queueSlipperyFeet)
+			{
+				queueSlipperyFeet = false;
+				slipperyFeet = true;
+			}
+			if (queueNormalFeet)
+            {
+				queueNormalFeet = false;
+				slipperyFeet = false;
 			}
 		}
 	}
@@ -107,7 +129,8 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			float speed = 10f;
+			Vector3 targetVelocity = new Vector2(move * speed, m_Rigidbody2D.velocity.y);
 			if (!slipperyFeet)
 			{
 				// And then smoothing it out and applying it to the character
@@ -115,8 +138,26 @@ public class CharacterController2D : MonoBehaviour
 			}
 			if (slipperyFeet)
             {
-				// And then smoothing it out and applying it to the character
-				m_Rigidbody2D.AddForce(targetVelocity);
+				if (move > 0)
+				{
+					isMovingRight = true;
+					isMovingLeft = false;
+				}
+
+				if (move < 0)
+				{
+					isMovingLeft = true;
+					isMovingRight = false;
+				}
+
+				Vector2 movement = Vector2.zero;
+				if (isMovingRight)
+					movement = new Vector2(Mathf.Abs(move * speed) * Time.deltaTime, 0);
+
+				if (isMovingLeft)
+					movement = new Vector2(-Mathf.Abs(move * speed) * Time.deltaTime, 0);
+
+				m_Rigidbody2D.velocity += movement;
 			}
 
 			// If the input is moving the player right and the player is facing left...

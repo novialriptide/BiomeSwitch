@@ -12,13 +12,23 @@ public class WorldGen : MonoBehaviour
     public GameObject[] platforms;
 
     private Vector3 previousPlatformPosition;
+    private int previousPlatform;
+
+    private int randomIntExcept(int min, int max, int except)
+    {
+        int result = Random.Range(min, max - 1);
+        if (result >= except) result += 1;
+        return result;
+    }
 
     private void Update()
     {
         if (Vector3.Distance(player.transform.position, previousPlatformPosition) < spawnPlatformDistance)
         {
-            Vector3 newPosition = new Vector3((int) Random.Range(minJumpDistance, maxJumpDistance), 0, 0);
-            createPlatform((int) Random.Range(0, platforms.Length), newPosition);
+            Vector3 newPosition = new Vector3((int) Random.Range(minJumpDistance, maxJumpDistance + 1), 0, 0);
+            int newPlatformIndex = (int)randomIntExcept(0, platforms.Length, previousPlatform);
+            createPlatform(newPlatformIndex, newPosition);
+            previousPlatform = newPlatformIndex;
         }
     }
 
