@@ -1160,6 +1160,7 @@ MonoBehaviour:
   sunburnBar: {fileID: 783665786}
   speed: 20
   resetTime: 1.5
+  biomeHint: {fileID: 1006534762}
   timeRemainingTilReset: 0
   resetTimer: 0
 --- !u!1 &1372194303
@@ -1342,6 +1343,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: player_run
+    audioType: sound
+    clip: {fileID: 8300000, guid: ec3ed5e34bfca1e45b7d527505e370d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_fall
+    audioType: sound
+    clip: {fileID: 8300000, guid: 6aa110b138724ed4fb6630a9f6a2301a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   sources: []
 --- !u!1 &1541568514
 GameObject:
@@ -1372,7 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6620eb781eec7e741bc55031f8558511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPlatformDistance: 200
+  spawnPlatformDistance: 100
   minJumpDistance: 3
   maxJumpDistance: 5
   player: {fileID: 1289885793}

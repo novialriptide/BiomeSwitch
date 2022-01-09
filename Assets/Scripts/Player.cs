@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("Misc")]
     public float speed;
     public float resetTime = 3.0f;
+    public TextMeshProUGUI biomeHint;
 
     [HideInInspector]
     public float timeRemainingTilReset;
@@ -60,6 +62,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            Reset();
+
         xAxis = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
@@ -117,7 +122,10 @@ public class Player : MonoBehaviour
             timeRemainingTilReset -= Time.deltaTime;
 
         if (transform.position.y < -10 || timeRemainingTilReset <= 0 || hydration <= 0)
-            Reset();
+        {
+            biomeHint.text = "distance traveled: " + scores.score.ToString("0.000");
+            characterController2D.lockMovement = true;
+        }
 
         if (transform.position.x > scores.score && spriteRenderer.isVisible)
             scores.score = transform.position.x;
@@ -131,13 +139,17 @@ public class Player : MonoBehaviour
         animator.SetFloat("player_speed", Mathf.Abs(xAxis));
         characterController2D.Move(xAxis * Time.deltaTime * speed, false, jump);
         if (xAxis != 0)
+        {
             hydration -= Time.deltaTime * moveHydrationPenalty;
+            audioManager.Play("player_run");
+        }
 
         jump = false;
     }
 
     private void Reset()
     {
+        // audioManager.Play("player_fall"); // This doesn't work properly for some reason
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         scores.scores.Add(scores.score);

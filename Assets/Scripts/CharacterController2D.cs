@@ -20,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
+	public bool lockMovement = false;
 	public bool queueNormalFeet = false;
 	public bool queueSlipperyFeet = false;
 	public bool slipperyFeet = false;
@@ -96,7 +97,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
+		if ((m_Grounded || m_AirControl) && !lockMovement)
 		{
 
 			// If crouching
@@ -173,7 +174,7 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		if (m_Grounded && jump && !lockMovement)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;

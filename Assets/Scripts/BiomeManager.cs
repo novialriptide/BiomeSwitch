@@ -69,7 +69,6 @@ public class BiomeManager : MonoBehaviour
             {
                 ReskinAllPlatforms(atPalette);
                 audioManager.stopAllAudio();
-                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(87f / 255f, 135f / 255f, 212f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
@@ -79,13 +78,13 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_arctic_tundra_biome", leftOff);
                 biomeHint.text = "The floor is slippery, be careful!";
                 rainParticles.Stop();
+                audioManager.Play("sound_transition");
             }
 
             if (biome == 1)
             {
                 ReskinAllPlatforms(bPalette);
                 audioManager.stopAllAudio();
-                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(18f / 255f, 109f / 255f, 255f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
@@ -95,13 +94,13 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_beach_biome", leftOff);
                 biomeHint.text = "It's getting hot, find some shade to avoid sunburns.";
                 rainParticles.Stop();
+                audioManager.Play("sound_transition");
             }
 
             if (biome == 2)
             {
                 ReskinAllPlatforms(rfPalette);
                 audioManager.stopAllAudio();
-                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(50f / 255f, 168f / 255f, 82f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
@@ -111,6 +110,7 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_rainforest_biome", leftOff);
                 biomeHint.text = "Water! Get out of the shade to stay hydrated.";
                 rainParticles.Play();
+                audioManager.Play("sound_transition");
             }
         }
 
@@ -121,7 +121,6 @@ public class BiomeManager : MonoBehaviour
                 leftOff = a.time;
             }
         }
-
     }
 
     public void ReskinAllPlatforms(TileBase[] palette)
