@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [Header("Hydration")]
+    public bool waterCollection = false;
     public float moveHydrationPenalty = 0.05f;
     public float hydration = 100f;
+    public float hydrationCollectionValue = 13f;
 
     [Header("Sunburn")]
     public bool sunburnEnabled = false;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool resetTimer = false;
 
+    static float score;
     bool jump = false;
     float xAxis = 0f;
 
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
     CharacterController2D characterController2D;
     Rigidbody2D rigidBody2D;
     SpriteRenderer spriteRenderer;
+    Scores scores;
 
     private void Start()
     {
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
         characterController2D = GetComponent<CharacterController2D>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        scores = FindObjectOfType<Scores>().GetComponent<Scores>();
         timeRemainingTilReset = resetTime;
     }
 
@@ -68,6 +73,11 @@ public class Player : MonoBehaviour
 
         if (biomeManager.biome == 1)
             sunburnEnabled = true;
+
+        if (waterCollection && !characterController2D.isUnderGround())
+        {
+            hydration += Time.deltaTime * hydrationCollectionValue;
+        }
 
         if (sunburnEnabled)
         {
@@ -98,12 +108,7 @@ public class Player : MonoBehaviour
             timeRemainingTilReset -= Time.deltaTime;
 
         if (transform.position.y < -10 || timeRemainingTilReset <= 0 || hydration <= 0)
-        {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-
-        // Debug.Log(transform.position.x);
+            Reset();
     }
 
     private void FixedUpdate()
@@ -113,5 +118,12 @@ public class Player : MonoBehaviour
             hydration -= Time.deltaTime * moveHydrationPenalty;
 
         jump = false;
+    }
+
+    private void Reset()
+    {
+        scores.score = transform.position.x;
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

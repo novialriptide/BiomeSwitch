@@ -5,7 +5,8 @@ public class BiomeManager : MonoBehaviour
     public GameObject player;
 
     public float biomeChangeTime = 30f;
-    public int biome;
+    public int biome = -1;
+    public ParticleSystem rainParticles;
 
     [HideInInspector]
     public float timeRemainingTilChange = 0;
@@ -13,7 +14,7 @@ public class BiomeManager : MonoBehaviour
     public float leftOff = 0f;
     public float maxMusicLength = 23f;
 
-    int maxBiomes = 1;
+    int maxBiomes = 2;
 
     AudioManager audioManager;
 
@@ -46,8 +47,10 @@ public class BiomeManager : MonoBehaviour
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
                 characterController2D.queueSlipperyFeet = true;
-                playerData.sunburnEnabled = true;
+                playerData.sunburnEnabled = false;
+                playerData.waterCollection = false;
                 audioManager.PlayAtPosition("music_arctic_tundra_biome", leftOff);
+                rainParticles.Stop();
             }
 
             if (biome == 1)
@@ -58,7 +61,22 @@ public class BiomeManager : MonoBehaviour
                 Player playerData = player.GetComponent<Player>();
                 characterController2D.queueNormalFeet = true;
                 playerData.sunburnEnabled = true;
+                playerData.waterCollection = false;
                 audioManager.PlayAtPosition("music_beach_biome", leftOff);
+                rainParticles.Stop();
+            }
+
+            if (biome == 2)
+            {
+                audioManager.stopAllAudio();
+                Camera.main.backgroundColor = new Color(50f / 255f, 168f / 255f, 82f / 255f, 255f / 255f);
+                CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
+                Player playerData = player.GetComponent<Player>();
+                characterController2D.queueNormalFeet = true;
+                playerData.sunburnEnabled = false;
+                playerData.waterCollection = true;
+                audioManager.PlayAtPosition("music_rainforest_biome", leftOff);
+                rainParticles.Play();
             }
         }
 
