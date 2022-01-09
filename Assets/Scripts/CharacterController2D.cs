@@ -23,8 +23,6 @@ public class CharacterController2D : MonoBehaviour
 	public bool queueSlipperyFeet = false;
 	public bool slipperyFeet = false;
 
-	bool isMovingUp = false;
-	bool isMovingDown = false;
 	bool isMovingLeft = false;
 	bool isMovingRight = false;
 
