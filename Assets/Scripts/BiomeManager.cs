@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using TMPro;
 
 public class BiomeManager : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject player;
+    public GameObject platforms;
 
+    [Header("Biome Switch Settings")]
     public float biomeStartChangeTime;
     public float biomeChangeTime;
     public int biome = -1;
@@ -21,6 +25,14 @@ public class BiomeManager : MonoBehaviour
 
     AudioManager audioManager;
 
+    [Header("Biome Tile Palettes")]
+    public GameObject arcticTundraPalette;
+    public TileBase[] atPalette;
+    public GameObject beachPalette;
+    public TileBase[] bPalette;
+    public GameObject rainForestPalette;
+    public TileBase[] rfPalette;
+
     private void Awake()
     {
         audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
@@ -28,6 +40,15 @@ public class BiomeManager : MonoBehaviour
         int seed = System.DateTime.Now.Millisecond;
         Random.InitState(seed);
         biomeChangeTime = biomeStartChangeTime;
+
+        Tilemap arcticTundraTileMap = arcticTundraPalette.GetComponentInChildren<Tilemap>();
+        atPalette = arcticTundraTileMap.GetTilesBlock(arcticTundraTileMap.cellBounds);
+
+        Tilemap beachTileMap = beachPalette.GetComponentInChildren<Tilemap>();
+        bPalette = beachTileMap.GetTilesBlock(beachTileMap.cellBounds);
+
+        Tilemap rainforestTileMap = rainForestPalette.GetComponentInChildren<Tilemap>();
+        rfPalette = rainforestTileMap.GetTilesBlock(rainforestTileMap.cellBounds);
     }
 
     private void Update()
@@ -46,6 +67,7 @@ public class BiomeManager : MonoBehaviour
 
             if (biome == 0)
             {
+                ReskinAllPlatforms(atPalette);
                 audioManager.stopAllAudio();
                 Camera.main.backgroundColor = new Color(87f / 255f, 135f / 255f, 212f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
@@ -60,6 +82,7 @@ public class BiomeManager : MonoBehaviour
 
             if (biome == 1)
             {
+                ReskinAllPlatforms(bPalette);
                 audioManager.stopAllAudio();
                 Camera.main.backgroundColor = new Color(18f / 255f, 109f / 255f, 255f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
@@ -74,6 +97,7 @@ public class BiomeManager : MonoBehaviour
 
             if (biome == 2)
             {
+                ReskinAllPlatforms(rfPalette);
                 audioManager.stopAllAudio();
                 Camera.main.backgroundColor = new Color(50f / 255f, 168f / 255f, 82f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
@@ -95,5 +119,12 @@ public class BiomeManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void ReskinAllPlatforms(TileBase[] palette)
+    {
+        TilePaletteReskin[] reskins = platforms.GetComponentsInChildren<TilePaletteReskin>();
+        foreach (TilePaletteReskin reskin in reskins)
+            reskin.Reskin(palette);
     }
 }
