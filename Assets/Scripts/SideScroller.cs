@@ -5,7 +5,13 @@ using UnityEngine;
 public class SideScroller : MonoBehaviour
 {
     public bool moving = false;
+    public float xAxisStartSpeed = 0;
     public float xAxisSpeed = 0;
+
+    private void Start()
+    {
+        xAxisSpeed = xAxisStartSpeed;
+    }
 
     // Update is called once per frame
     void Update()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class BiomeManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BiomeManager : MonoBehaviour
     public float biomeChangeTime;
     public int biome = -1;
     public ParticleSystem rainParticles;
+    public TextMeshProUGUI biomeHint;
 
     [HideInInspector]
     public float timeRemainingTilChange = 0;
@@ -52,6 +54,7 @@ public class BiomeManager : MonoBehaviour
                 playerData.sunburnEnabled = false;
                 playerData.waterCollection = false;
                 audioManager.PlayAtPosition("music_arctic_tundra_biome", leftOff);
+                biomeHint.text = "The floor is slippery, be careful!";
                 rainParticles.Stop();
             }
 
@@ -65,6 +68,7 @@ public class BiomeManager : MonoBehaviour
                 playerData.sunburnEnabled = true;
                 playerData.waterCollection = false;
                 audioManager.PlayAtPosition("music_beach_biome", leftOff);
+                biomeHint.text = "It's getting hot, find some shade to avoid sunburns.";
                 rainParticles.Stop();
             }
 
@@ -78,6 +82,7 @@ public class BiomeManager : MonoBehaviour
                 playerData.sunburnEnabled = false;
                 playerData.waterCollection = true;
                 audioManager.PlayAtPosition("music_rainforest_biome", leftOff);
+                biomeHint.text = "Water! Get out of the shade to stay hydrated.";
                 rainParticles.Play();
             }
         }

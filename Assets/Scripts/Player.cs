@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigidBody2D;
     SpriteRenderer spriteRenderer;
     Scores scores;
+    SideScroller sideScroller;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         scores = FindObjectOfType<Scores>().GetComponent<Scores>();
+        sideScroller = Camera.main.gameObject.GetComponent<SideScroller>();
         timeRemainingTilReset = resetTime;
     }
 
@@ -113,7 +115,8 @@ public class Player : MonoBehaviour
         if (transform.position.x > scores.score && spriteRenderer.isVisible)
             scores.score = transform.position.x;
 
-        biomeManager.biomeChangeTime = biomeManager.biomeStartChangeTime + (scores.score / 100);
+        biomeManager.biomeChangeTime = biomeManager.biomeStartChangeTime + (scores.score / 1000);
+        sideScroller.xAxisSpeed = sideScroller.xAxisStartSpeed + (scores.score / 10000);
     }
 
     private void FixedUpdate()
