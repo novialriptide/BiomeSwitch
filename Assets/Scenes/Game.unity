@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1222788447}
   m_CeilingCheck: {fileID: 182007915}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
   queueNormalFeet: 0
   queueSlipperyFeet: 0
   slipperyFeet: 0
@@ -1330,6 +1331,13 @@ MonoBehaviour:
   - name: sound_transition
     audioType: sound
     clip: {fileID: 8300000, guid: ab0a0affb92e8884f910f48ed2063213, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_jump
+    audioType: sound
+    clip: {fileID: 8300000, guid: ee11e7aefc0243643aaba8186389b7db, type: 3}
     volume: 1
     pitch: 1
     loop: 0

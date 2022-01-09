@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     bool jump = false;
     float xAxis = 0f;
 
+    AudioManager audioManager;
     BiomeManager biomeManager;
     CharacterController2D characterController2D;
     Rigidbody2D rigidBody2D;
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
         biomeManager = FindObjectOfType<BiomeManager>().GetComponent<BiomeManager>();
         characterController2D = GetComponent<CharacterController2D>();
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
         xAxis = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
+            if (characterController2D.m_Grounded)
+                audioManager.Play("player_jump");
             jump = true;
         }
         animator.SetBool("player_in_air", !characterController2D.m_Grounded);
