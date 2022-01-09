@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     float xAxis = 0f;
 
     AudioManager audioManager;
+    AudioSource footStepsSound;
     BiomeManager biomeManager;
     CharacterController2D characterController2D;
     Rigidbody2D rigidBody2D;
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        footStepsSound = GetComponent<AudioSource>();
         biomeManager = FindObjectOfType<BiomeManager>().GetComponent<BiomeManager>();
         characterController2D = GetComponent<CharacterController2D>();
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -141,7 +143,8 @@ public class Player : MonoBehaviour
         if (xAxis != 0)
         {
             hydration -= Time.deltaTime * moveHydrationPenalty;
-            audioManager.Play("player_run");
+            if (!footStepsSound.isPlaying && characterController2D.m_Grounded)
+                footStepsSound.Play();
         }
 
         jump = false;

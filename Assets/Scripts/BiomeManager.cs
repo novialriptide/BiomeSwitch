@@ -14,6 +14,10 @@ public class BiomeManager : MonoBehaviour
     public int biome = -1;
     public ParticleSystem rainParticles;
     public TextMeshProUGUI biomeHint;
+    public SpriteRenderer biomeBackground;
+    public Sprite arcticBG;
+    public Sprite beachBG;
+    public Sprite rainforestBG;
 
     [HideInInspector]
     public float timeRemainingTilChange = 0;
@@ -78,6 +82,7 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_arctic_tundra_biome", leftOff);
                 biomeHint.text = "The floor is slippery, be careful!";
                 rainParticles.Stop();
+                biomeBackground.sprite = arcticBG;
                 audioManager.Play("sound_transition");
             }
 
@@ -94,6 +99,7 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_beach_biome", leftOff);
                 biomeHint.text = "It's getting hot, find some shade to avoid sunburns.";
                 rainParticles.Stop();
+                biomeBackground.sprite = beachBG;
                 audioManager.Play("sound_transition");
             }
 
@@ -110,6 +116,7 @@ public class BiomeManager : MonoBehaviour
                 audioManager.PlayAtPosition("music_rainforest_biome", leftOff);
                 biomeHint.text = "Water! Get out of the shade to stay hydrated.";
                 rainParticles.Play();
+                biomeBackground.sprite = rainforestBG;
                 audioManager.Play("sound_transition");
             }
         }
