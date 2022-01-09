@@ -42,15 +42,18 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Scores scores;
     SideScroller sideScroller;
+    Animator animator;
 
     private void Start()
     {
         biomeManager = FindObjectOfType<BiomeManager>().GetComponent<BiomeManager>();
         characterController2D = GetComponent<CharacterController2D>();
         rigidBody2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         scores = FindObjectOfType<Scores>().GetComponent<Scores>();
         sideScroller = Camera.main.gameObject.GetComponent<SideScroller>();
+        animator = GetComponentInChildren<Animator>();
+        Debug.Log(animator);
         timeRemainingTilReset = resetTime;
     }
 
@@ -121,6 +124,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetFloat("player_speed", Mathf.Abs(xAxis));
         characterController2D.Move(xAxis * Time.deltaTime * speed, false, jump);
         if (xAxis != 0)
             hydration -= Time.deltaTime * moveHydrationPenalty;
