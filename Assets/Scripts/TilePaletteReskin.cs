@@ -23,12 +23,13 @@ public class TilePaletteReskin : MonoBehaviour
                 {
                     foreach (TileBase t in palette)
                     {
-                        string[] nameTB = tb.name.Split('_');
-                        string[] nameT = t.name.Split('_');
-
-                        if (nameTB[nameTB.Length - 1] == nameT[nameT.Length - 1])
+                        if (tb != t)
                         {
-                            tm.SwapTile(tb, t);
+                            string[] nameTB = tb.name.Split('_');
+                            string[] nameT = t.name.Split('_');
+
+                            if (nameTB[nameTB.Length - 1] == nameT[nameT.Length - 1])
+                                tm.SwapTile(tb, t);
                         }
                     }
                 }
