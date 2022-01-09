@@ -69,6 +69,7 @@ public class BiomeManager : MonoBehaviour
             {
                 ReskinAllPlatforms(atPalette);
                 audioManager.stopAllAudio();
+                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(87f / 255f, 135f / 255f, 212f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
@@ -84,6 +85,7 @@ public class BiomeManager : MonoBehaviour
             {
                 ReskinAllPlatforms(bPalette);
                 audioManager.stopAllAudio();
+                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(18f / 255f, 109f / 255f, 255f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();
@@ -99,6 +101,7 @@ public class BiomeManager : MonoBehaviour
             {
                 ReskinAllPlatforms(rfPalette);
                 audioManager.stopAllAudio();
+                audioManager.Play("sound_transition");
                 Camera.main.backgroundColor = new Color(50f / 255f, 168f / 255f, 82f / 255f, 255f / 255f);
                 CharacterController2D characterController2D = player.GetComponent<CharacterController2D>();
                 Player playerData = player.GetComponent<Player>();

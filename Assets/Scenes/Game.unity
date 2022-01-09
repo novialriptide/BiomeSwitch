@@ -1269,6 +1269,20 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: music_main_menu
+    audioType: music
+    clip: {fileID: 8300000, guid: eb144b9f9bcb210439f79aad1df0b587, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: sound_transition
+    audioType: sound
+    clip: {fileID: 8300000, guid: ab0a0affb92e8884f910f48ed2063213, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   sources: []
 --- !u!1 &1541568514
 GameObject:

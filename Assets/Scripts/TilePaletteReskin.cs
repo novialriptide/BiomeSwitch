@@ -14,6 +14,7 @@ public class TilePaletteReskin : MonoBehaviour
 
     public void Reskin(TileBase[] palette)
     {
+        Debug.Log(palette.Length);
         for (int x = (int) tm.localBounds.min.x; x < tm.localBounds.max.x; x++)
         {
             for (int y = (int)tm.localBounds.min.y; y < tm.localBounds.max.y; y++)
