@@ -9,7 +9,9 @@ Adapt to the different environments as you progress through. Try getting a high-
 [Itch.io](https://novial.itch.io/)
 ]
 
-**Artist** cobalt6600
+**Artist** Arix [
+[Itch.io](https://arix-furette.itch.io/)
+]
 
 **Musician** Cyber Squib [
 [Blog](https://cybersquib.music.blog/)
