@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
         scores = FindObjectOfType<Scores>().GetComponent<Scores>();
         sideScroller = Camera.main.gameObject.GetComponent<SideScroller>();
         animator = GetComponentInChildren<Animator>();
-        Debug.Log(animator);
         timeRemainingTilReset = resetTime;
     }
 
@@ -64,6 +63,7 @@ public class Player : MonoBehaviour
         {
             jump = true;
         }
+        animator.SetBool("player_in_air", !characterController2D.m_Grounded);
 
         // Update Sliders
         hydrationBar.normalizedValue = hydration / 100;
