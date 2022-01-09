@@ -4,7 +4,8 @@ public class BiomeManager : MonoBehaviour
 {
     public GameObject player;
 
-    public float biomeChangeTime = 30f;
+    public float biomeStartChangeTime;
+    public float biomeChangeTime;
     public int biome = -1;
     public ParticleSystem rainParticles;
 
@@ -24,6 +25,7 @@ public class BiomeManager : MonoBehaviour
 
         int seed = System.DateTime.Now.Millisecond;
         Random.InitState(seed);
+        biomeChangeTime = biomeStartChangeTime;
     }
 
     private void Update()

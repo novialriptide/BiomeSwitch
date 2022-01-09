@@ -109,6 +109,11 @@ public class Player : MonoBehaviour
 
         if (transform.position.y < -10 || timeRemainingTilReset <= 0 || hydration <= 0)
             Reset();
+
+        if (transform.position.x > scores.score && spriteRenderer.isVisible)
+            scores.score = transform.position.x;
+
+        biomeManager.biomeChangeTime = biomeManager.biomeStartChangeTime + (scores.score / 100);
     }
 
     private void FixedUpdate()
@@ -122,8 +127,9 @@ public class Player : MonoBehaviour
 
     private void Reset()
     {
-        scores.score = transform.position.x;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        scores.scores.Add(scores.score);
+        scores.score = 0;
     }
 }

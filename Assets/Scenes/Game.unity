@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1289885793}
+  biomeStartChangeTime: 8
   biomeChangeTime: 8
   biome: -1
   rainParticles: {fileID: 1594237463}
