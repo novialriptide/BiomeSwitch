@@ -5,6 +5,8 @@ Adapt to the different environments as you progress through. Try getting a high-
 
 Developed under 3 days for the [MiniJam97](https://itch.io/jam/mini-jam-97-simulation)
 
+Soundtrack is available on [Spotify](https://open.spotify.com/album/1HS56qqczDsWvud0eSNC4U?si=wmyVL2iWRGOU8aUhQWMcgQ)
+
 **Developer** Andrew Hong [
 [GitHub](https://github.com/novialriptide)
 [Twitter](https://twitter.com/novialriptide)
