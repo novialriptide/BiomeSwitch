@@ -10,7 +10,6 @@ Soundtrack is available on [Spotify](https://open.spotify.com/album/1HS56qqczDsW
 ## Credits
 **Developer** Andrew Hong [
 [GitHub](https://github.com/novialriptide)
-[Twitter](https://twitter.com/novialriptide)
 [Itch.io](https://novial.itch.io/)
 ]
 
